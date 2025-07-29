@@ -4,7 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
-
+#gameDiv{
+  display: flex;
+  flex-direction: row;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -34,9 +37,38 @@
 }
 
 .card {
-  padding: 2em;
+  width: 4.5em;
+  height: 7em;
+  border: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2mm;
+  padding: 3px;
+  display: grid;
+  margin: 3px;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.topLeft{
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  justify-content: start;
+  align-content: space-between;
+}
+
+.bottomRight{
+  display: grid;
+  justify-content: start;
+  align-items: start;
+  transform: rotate(180deg);
+}
+
+.boardRow{
+  display: flex;
+  flex-direction: row;
 }

@@ -1,0 +1,9 @@
+#scoreboardDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.switch{
+    align-self: center;
+    margin-top: 5px;
+}

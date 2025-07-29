@@ -13,6 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.selected{
+  background-color: red;
+}
+
+#gameDiv{
+  display: grid;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -65,4 +72,62 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 75px;
+  width: 100px;
+  background-color: #80EF80;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 92px;
+  left: 4px;
+  top: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  content: "Higher";
+}
+
+input:checked + .slider {
+  background-color: coral;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px coral;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateY(36px);
+  -ms-transform: translateY(36px);
+  transform: translateY(36px);
+  content: "Lower";
 }
