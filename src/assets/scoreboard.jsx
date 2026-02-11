@@ -1,13 +1,13 @@
 import { Component, useState } from "react";
 import $ from "jquery";
-import "./scoreBoard.css";
+import "./sidebar.css";
 var score = 0;
 var streak = 0;
 var total = 0;
 export const incrementScore = () => {
-    score += 100;
+    score = 100;
     streak += 1;
-    total = score * streak;
+    total += score * streak;
 
     $('#scoreInput').val(score);
     $('#multInput').val(streak);
@@ -22,7 +22,7 @@ export const resetScore = () =>{
 export const Scoreboard = () =>{
     return(
         <>
-            <div id="scoreboardDiv" style={{display: "none", flexdirection: "column"}}>
+            <div id="scoreboardDiv">
                 Score:
                 <label value="Score">
                     <input id="scoreInput" disabled={true} defaultValue={score}></input>

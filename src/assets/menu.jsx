@@ -5,6 +5,7 @@ export default function Menu() {
     function startGame(){
         $("#boardDiv")[0].setAttribute("style", "display: inline");
         $("#scoreboardDiv")[0].setAttribute("style", "display: flex");
+        $("#levelDiv")[0].setAttribute("style", "display: flex");
         $("#startButton")[0].setAttribute("hidden", true);
     }
     return(
