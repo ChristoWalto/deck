@@ -4,8 +4,9 @@ import $ from "jquery";
 export default function Menu() {
     function startGame(){
         $("#boardDiv")[0].setAttribute("style", "display: inline");
+        $("#gameDiv")[0].setAttribute("style", "display: flex");
         $("#scoreboardDiv")[0].setAttribute("style", "display: flex");
-        $("#levelDiv")[0].setAttribute("style", "display: flex");
+        // $("#levelDiv")[0].setAttribute("style", "display: flex");
         $("#startButton")[0].setAttribute("hidden", true);
     }
     return(

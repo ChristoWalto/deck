@@ -19,6 +19,15 @@ export const resetScore = () =>{
     $('#multInput').val(streak);
 }
 
+export const restartScore = () =>{
+    score = 0;
+    streak = 0;
+    total = 0;
+    $('#scoreInput').val(score);
+    $('#multInput').val(streak);
+    $('#totalInput').val(total);
+}
+
 export const Scoreboard = () =>{
     return(
         <>

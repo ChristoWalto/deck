@@ -2,8 +2,7 @@ import { useState } from 'react'
 import $ from 'jquery';
 import Menu from './assets/menu.jsx'
 import './App.css'
-import {Scoreboard, incrementScore, resetScore} from './assets/scoreboard.jsx';
-import {Level} from './assets/level.jsx';
+import {Scoreboard, incrementScore, resetScore, restartScore} from './assets/scoreboard.jsx';
 
 var gameState = "running";
 
@@ -48,8 +47,8 @@ function Board(){
   let startingCards = startCards(startDeck, Array(9).fill(null));
   const[deck, setDeck] = useState(startDeck);
   const[cards, setCards] = useState(startingCards);
-  const[level, setLevel] = useState(1);
-  const[requiredScore, setRequiredScore] = useState(level * 1000);
+  // const[level, setLevel] = useState(1);
+  // const[requiredScore, setRequiredScore] = useState(level * 1000);
 
   function handleCardCick(i){
     var nextCards = cards.slice();
@@ -98,6 +97,11 @@ function Board(){
   function resetGame(){
     startDeck = shuffleDeck([2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14]);
     startingCards = startCards(startDeck, Array(9).fill(null));
+    var cardArray = document.getElementsByClassName("card");
+    for(var card of cardArray){
+      card.removeAttribute("disabled");
+    }
+    restartScore();
     setDeck(startDeck);
     setCards(startingCards);
   }
@@ -123,6 +127,9 @@ function Board(){
           <Card className="card" id="card8" value={cards[8]} cardOnClick={() => handleCardCick(8)}/>
         </div>
       </ul>
+      <button onClick={resetGame}>
+        Reset
+      </button>
     </div>
     </>
   )
@@ -133,10 +140,9 @@ export default function Game(){
     <>
     <div id="appDiv">
     <Menu />
-    <div id="gameDiv">
+    <div id="gameDiv" style={{display: "none"}}>
     <Scoreboard />
     <Board />
-    <Level />
     </div>
     </div>
     </>
