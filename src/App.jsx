@@ -3,19 +3,9 @@ import $ from 'jquery';
 import Menu from './assets/menu.jsx'
 import './App.css'
 import {Scoreboard, incrementScore, resetScore, restartScore} from './assets/scoreboard.jsx';
+import { Card } from './assets/cards.jsx';
 
 var gameState = "running";
-
-function Card({value, cardOnClick}){
-  var button = null;
-  //Replace with programmer art later
-  button = <button className="card" onClick={cardOnClick}>
-            <div className='topLeft'>{value}</div> 
-            <div className='bottomRight'>{value}</div>
-          </button>
-  return button;
-}
-
 
 function Board(){
   function shuffleDeck(deck){
