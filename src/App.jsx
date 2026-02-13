@@ -73,14 +73,22 @@ function Board(){
 
     if(!openCard){
       alert("You Lose");
-      gameState = "Over";
-      return;
+      gameState = "Lost";
     }
 
     if(deck.length == 0){
       alert("You Win!");
-      gameState = "Over"
-      return;
+      gameState = "Won"
+    }
+
+    if(gameState != 'Running'){
+      $("#endGameDiv")[0].setAttribute("style", "display: inline");
+      $("#boardDiv")[0].setAttribute("style", "display: none");
+      if(gameState == "Won"){
+        $("#endGameText").text("You Win");
+      } else {
+        $("#endGameText").text("You Lose!");
+      }
     }
   }
 
@@ -91,6 +99,8 @@ function Board(){
     for(var card of cardArray){
       card.removeAttribute("disabled");
     }
+    $("#endGameDiv")[0].setAttribute("style", "display: none");
+    $("#boardDiv")[0].setAttribute("style", "display: inline");
     restartScore();
     setDeck(startDeck);
     setCards(startingCards);
@@ -98,6 +108,14 @@ function Board(){
 
   return(
     <>
+    <div id="endGameDiv" style={{display: "none"}}>
+      <div id="endGameText">
+        
+      </div>
+      <button onClick={resetGame}>
+        Play Again
+      </button>
+    </div> 
     <div id="boardDiv" style={{display: "none"}}>
       <div>Cards Remaining: {deck.length}</div>
       <ul id='boardList'>
