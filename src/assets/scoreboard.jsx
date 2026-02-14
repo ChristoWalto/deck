@@ -45,12 +45,12 @@ export const Scoreboard = () =>{
                 <label value="total">
                     <input id="totalInput" disabled={true} defaultValue={total}></input>
                 </label>
-                <label className="switch">
+                {/* <label className="switch">
                     <span>Testing</span>
                     <input type="checkbox" name="guessBox" id="guessBox"></input>
                     <span className="slider">
                     </span>
-                </label>
+                </label> */}
             </div>
         </>
     )

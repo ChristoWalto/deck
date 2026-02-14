@@ -64,10 +64,10 @@ body {
   border: black;
   border-width: 1px;
   border-style: solid;
-  border-radius: 2mm;
-  padding: 3px;
+  border-radius: 4px;
   display: grid;
   margin: 3px;
+  background: white;
 }
 
 .read-the-docs {
@@ -81,6 +81,11 @@ body {
   align-self: start;
   justify-content: start;
   align-content: space-between;
+  padding: 0px;
+  height:100%;
+  border-radius: 3px 3px 0px 0px;
+  border: transparent !important;
+  padding: 3px
 }
 
 .bottomRight{
@@ -88,8 +93,28 @@ body {
   justify-content: start;
   align-items: start;
   transform: rotate(180deg);
+  padding:0px;
+  height:100%;
+  border-radius: 0px;
+  border: transparent !important;
+  padding:3px;
+  border-radius: 3px 3px 0px 0px;
+}
+.topLeft:hover{
+  background-color: green;
+  border: 0px;
 }
 
+.bottomRight:hover{
+  background-color: red;
+  border: 0px;
+}
+.flip{
+  transform: rotate(180deg);
+}
+.valSpan{
+  text-align: left;
+}
 .boardRow{
   display: flex;
   flex-direction: row;
