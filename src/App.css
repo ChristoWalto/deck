@@ -85,7 +85,9 @@ body {
   height:100%;
   border-radius: 3px 3px 0px 0px;
   border: transparent !important;
-  padding: 3px
+  padding: 3px;
+  /* background-color: black; */
+  transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
 .bottomRight{
@@ -99,16 +101,23 @@ body {
   border: transparent !important;
   padding:3px;
   border-radius: 3px 3px 0px 0px;
+  /* background-color: black; */
+  transition: background-color 0.5s ease, transform 0.5s ease;
 }
 .topLeft:hover{
-  background-color: green;
+  background-color: #59d97b;
   border: 0px;
 }
 
 .bottomRight:hover{
-  background-color: red;
+  background-color: #db4d4d;
   border: 0px;
 }
+
+.show{
+  background-color: white !important;
+}
+
 .flip{
   transform: rotate(180deg);
 }
@@ -125,5 +134,7 @@ body {
 }
 
 #boardList{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   padding-inline-start: 0em !important;
 }

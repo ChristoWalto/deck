@@ -1,13 +1,11 @@
 #scoreboardDiv{
     display: flex;
     flex-direction: column;
-    display: none;
 }
 
 #levelDiv{
     display: flex;
     flex-direction: column;
-    display: none;
 }
 
 .switch{
