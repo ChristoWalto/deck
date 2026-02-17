@@ -1,13 +1,32 @@
 import { useRef, useState } from 'react'
-import $ from 'jquery';
+// import $ from 'jquery';
 import './App.css'
-import {Scoreboard, incrementScore, resetScore, restartScore} from './assets/scoreboard.jsx';
+import {Scoreboard} from './assets/scoreboard.jsx';
 import { Card } from './assets/cards.jsx';
 
 export default function Board(){
   const boardRef = useRef(0);
   const [gameState, setGameState] = useState("Starting");
   const [gameOverText, setGameOverText] = useState("");
+  const [score, setScore] = useState(0);
+  const [streak, setStreak] = useState(1);
+  const [total, setTotal] = useState(0);
+
+  function incrementScore(){
+    setScore(100);
+    setStreak(streak + 1);
+    setTotal(total + score * streak);
+  }
+
+  function resetScore(){
+      setStreak(1);
+  }
+
+  function restartScore(){
+      setScore(0);
+      setStreak(1);
+      setTotal(0);
+  }
   function shuffleDeck(deck){
     var drawn = -1
     var shuffleDeck = Array();
@@ -87,16 +106,6 @@ export default function Board(){
       setGameState("Won");
       setGameOverText("You Won");
     }
-
-    if(gameState != 'Running'){
-      $("#endGameDiv")[0].setAttribute("style", "display: inline");
-      $("#boardDiv")[0].setAttribute("style", "display: none");
-      if(gameState == "Won"){
-        $("#endGameText").text("You Win");
-      } else {
-        $("#endGameText").text("You Lose!");
-      }
-    }
   }
 
   function resetGame(){
@@ -118,7 +127,6 @@ export default function Board(){
   function startGame(){
     setGameState("Running");
   }
-
   return(
     <>
     <div id="appDiv">
@@ -130,8 +138,7 @@ export default function Board(){
       )}
       {gameState != 'Starting' && (
         <div id="gameDiv">
-          <Scoreboard />
-          
+          <Scoreboard score={score} streak={streak} total={total} />
           {gameState != 'Running' && (
             <div id="endGameDiv">
               <div id="endGameText">

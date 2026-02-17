@@ -23,6 +23,9 @@ body {
 }
 #gameDiv{
   display: flex;
+  width: 33vw;
+  height: fit-content;
+  min-height: 60vh;
   flex-direction: row;
   border-radius: 2%;
   border-color: #132C44;
