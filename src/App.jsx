@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react'
-// import $ from 'jquery';
 import './App.css'
 import {Scoreboard} from './assets/scoreboard.jsx';
 import { Card } from './assets/cards.jsx';
@@ -59,8 +58,6 @@ export default function Board(){
   let startingCards = startCards(startDeck, Array(9).fill(null));
   const[deck, setDeck] = useState(startDeck);
   const[cards, setCards] = useState(startingCards);
-  // const[level, setLevel] = useState(1);
-  // const[requiredScore, setRequiredScore] = useState(level * 1000);
 
   function handleCardCick(i, higher){
     var nextCards = cards.slice();

@@ -21,6 +21,7 @@ body {
   text-align: center;
   color: white;
 }
+
 #gameDiv{
   display: flex;
   width: 33vw;
@@ -32,6 +33,7 @@ body {
   background-color: #132C44;
   gap: 1em;
   padding: 1em;
+  justify-content: start;
 }
 .logo {
   height: 6em;
@@ -141,3 +143,11 @@ body {
   grid-template-columns: repeat(3, 1fr);
   padding-inline-start: 0em !important;
 }
+
+#boardDiv{
+  margin:auto;
+}
+#endGameDiv{
+  margin:auto;
+}
+
