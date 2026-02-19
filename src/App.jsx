@@ -45,11 +45,11 @@ export default function Board(){
   }
 
   function guessedWrong(i){
-    var cardArray = document.getElementsByClassName("card");
+    var cardArray = boardRef.current.querySelectorAll(':scope > div');
     var card = cardArray[i];
     resetScore();
     card.setAttribute("disabled", "true");
-    var buttons = card.children;
+    var buttons = card.children[1].children;
     buttons[0].setAttribute("disabled", "true");
     buttons[1].setAttribute("disabled", "true");
   }
@@ -65,28 +65,29 @@ export default function Board(){
 
     var badGuess = false;
 
-    if(higher && cards[i] >= nextCards[i]){
+    if(higher && cards[i] > nextCards[i]){
       badGuess = true;
-    } else if (!higher && cards[i] <= nextCards[i]){
+    } else if (!higher && cards[i] < nextCards[i]){
       badGuess = true;
     }
-    if(badGuess){
-      guessedWrong(i);
-    } else {
-      incrementScore();
-    }
-    var board = boardRef.current;
-    var card = board.querySelectorAll('div').item(i).childNodes;
-    card.forEach(button => {
-      button.classList.add("show");
-    });
-    checkGameEnd();
-    setCards(nextCards);
+
+    var card = boardRef.current.querySelectorAll(':scope > div').item(i);
+    card.classList.toggle("flipped");
+    setTimeout(() => {
+      if(badGuess){
+        guessedWrong(i);
+      } else {
+        incrementScore();
+      }
+      checkGameEnd();
+      setCards(nextCards);
+      card.classList.toggle("flipped");
+    }, 300);
+    
   }
 
   function checkGameEnd(){
-    var htmlCards = document.getElementsByClassName("card");
-    
+    var htmlCards = boardRef.current.querySelectorAll(':scope > div');
     var openCard = false;
     for(var x = 0; x < htmlCards.length; x++){
       if(!htmlCards[x].getAttribute("disabled")){
@@ -106,15 +107,14 @@ export default function Board(){
   }
 
   function resetGame(){
-    console.log("resetting");
     startDeck = shuffleDeck([2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14]);
     startingCards = startCards(startDeck, Array(9).fill(null));
     setGameState("Running");
-    var cardArray = document.getElementsByClassName("card");
+    var cardArray = boardRef.current.querySelectorAll(':scope > div');
     for(var card of cardArray){
       card.removeAttribute("disabled");
-      card.children[0].removeAttribute("disabled");
-      card.children[1].removeAttribute("disabled");
+      card.children[1].children[0].removeAttribute("disabled");
+      card.children[1].children[1].removeAttribute("disabled");
     }
     restartScore();
     setDeck(startDeck);

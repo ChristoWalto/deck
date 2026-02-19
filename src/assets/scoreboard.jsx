@@ -25,7 +25,7 @@ export const Scoreboard = ({score, streak, total}) =>{
                 <label value="total">
                     <input id="totalInput" disabled={true} value={total}></input>
                 </label>
-                <button onClick={toggleRules}>
+                <button className="htpToggle" onClick={toggleRules}>
                     How to Play
                 </button>
                 {showRules && (
