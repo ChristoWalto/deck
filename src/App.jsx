@@ -7,14 +7,14 @@ export default function Board(){
   const boardRef = useRef(0);
   const [gameState, setGameState] = useState("Starting");
   const [gameOverText, setGameOverText] = useState("");
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(100);
   const [streak, setStreak] = useState(1);
   const [total, setTotal] = useState(0);
 
   function incrementScore(){
     setScore(100);
     setStreak(streak + 1);
-    setTotal(total + score * streak);
+    setTotal(total + (score * streak));
   }
 
   function resetScore(){
@@ -22,10 +22,11 @@ export default function Board(){
   }
 
   function restartScore(){
-      setScore(0);
+      setScore(100);
       setStreak(1);
       setTotal(0);
   }
+
   function shuffleDeck(deck){
     var drawn = -1
     var shuffleDeck = Array();
@@ -110,12 +111,7 @@ export default function Board(){
     startDeck = shuffleDeck([2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14]);
     startingCards = startCards(startDeck, Array(9).fill(null));
     setGameState("Running");
-    var cardArray = boardRef.current.querySelectorAll(':scope > div');
-    for(var card of cardArray){
-      card.removeAttribute("disabled");
-      card.children[1].children[0].removeAttribute("disabled");
-      card.children[1].children[1].removeAttribute("disabled");
-    }
+
     restartScore();
     setDeck(startDeck);
     setCards(startingCards);
